@@ -120,6 +120,28 @@ fun AboutContactScreen(modifier: Modifier = Modifier) {
           Text("Official Communications", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
           Spacer(modifier = Modifier.height(12.dp))
 
+          // Phone
+          ContactRow(
+            icon = Icons.Default.Call,
+            title = "Engineering Hotline & Mobile",
+            value = ShamsContactInfo.PHONE,
+            actionLabel = "Call Now",
+            onAction = { ShamsContactInfo.launchDialer(context) }
+          )
+
+          Divider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+
+          // WhatsApp Direct
+          ContactRow(
+            icon = Icons.Default.Call,
+            title = "Official WhatsApp Business",
+            value = ShamsContactInfo.WHATSAPP_DISPLAY,
+            actionLabel = "WhatsApp",
+            onAction = { ShamsContactInfo.launchWhatsApp(context) }
+          )
+
+          Divider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+
           // Email
           ContactRow(
             icon = Icons.Default.Email,
@@ -127,17 +149,6 @@ fun AboutContactScreen(modifier: Modifier = Modifier) {
             value = ShamsContactInfo.EMAIL,
             actionLabel = "Send Email",
             onAction = { ShamsContactInfo.launchEmail(context) }
-          )
-
-          Divider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
-
-          // Phone
-          ContactRow(
-            icon = Icons.Default.Call,
-            title = "Engineering Hotline & Dispatch",
-            value = ShamsContactInfo.PHONE,
-            actionLabel = "Call Now",
-            onAction = { ShamsContactInfo.launchDialer(context) }
           )
 
           Divider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))

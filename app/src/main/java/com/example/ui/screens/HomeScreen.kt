@@ -150,6 +150,7 @@ fun HomeScreen(
     item {
       DirectContactBanner(
         onCall = { ShamsContactInfo.launchDialer(context) },
+        onWhatsApp = { ShamsContactInfo.launchWhatsApp(context) },
         onEmail = { ShamsContactInfo.launchEmail(context) },
         modifier = Modifier.padding(16.dp)
       )
@@ -781,6 +782,7 @@ private fun BrandChip(brand: String, modifier: Modifier = Modifier) {
 @Composable
 private fun DirectContactBanner(
   onCall: () -> Unit,
+  onWhatsApp: () -> Unit,
   onEmail: () -> Unit,
   modifier: Modifier = Modifier
 ) {
@@ -801,9 +803,9 @@ private fun DirectContactBanner(
         color = Color.White
       )
       Text(
-        text = "Speak directly with a SHAMS & Sons Co project engineer for a custom site assessment.",
+        text = "Direct Hotline & WhatsApp: 0321-2336901\nSpeak directly with a SHAMS & Sons Co project engineer.",
         style = MaterialTheme.typography.bodyMedium,
-        color = Color.White.copy(alpha = 0.9f),
+        color = Color.White.copy(alpha = 0.95f),
         textAlign = androidx.compose.ui.text.style.TextAlign.Center,
         modifier = Modifier.padding(vertical = 6.dp)
       )
@@ -812,28 +814,39 @@ private fun DirectContactBanner(
 
       Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
       ) {
         Button(
           onClick = onCall,
           colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = ShamsBluePrimary),
           shape = RoundedCornerShape(8.dp),
+          modifier = Modifier.weight(1.2f)
+        ) {
+          Icon(Icons.Default.Phone, contentDescription = null, modifier = Modifier.size(15.dp))
+          Spacer(modifier = Modifier.width(4.dp))
+          Text("0321-2336901", fontWeight = FontWeight.Bold, fontSize = 11.sp)
+        }
+
+        Button(
+          onClick = onWhatsApp,
+          colors = ButtonDefaults.buttonColors(containerColor = ShamsEmerald, contentColor = Color.White),
+          shape = RoundedCornerShape(8.dp),
           modifier = Modifier.weight(1f)
         ) {
-          Icon(Icons.Default.Phone, contentDescription = null, modifier = Modifier.size(16.dp))
-          Spacer(modifier = Modifier.width(6.dp))
-          Text("Call Engineering", fontWeight = FontWeight.Bold)
+          Icon(Icons.Default.Phone, contentDescription = null, modifier = Modifier.size(15.dp))
+          Spacer(modifier = Modifier.width(4.dp))
+          Text("WhatsApp", fontWeight = FontWeight.Bold, fontSize = 11.sp)
         }
 
         Button(
           onClick = onEmail,
           colors = ButtonDefaults.buttonColors(containerColor = ShamsNavyDark, contentColor = Color.White),
           shape = RoundedCornerShape(8.dp),
-          modifier = Modifier.weight(1f)
+          modifier = Modifier.weight(0.9f)
         ) {
-          Icon(Icons.Default.Email, contentDescription = null, modifier = Modifier.size(16.dp))
-          Spacer(modifier = Modifier.width(6.dp))
-          Text("Email shamssonsco", fontWeight = FontWeight.Bold, fontSize = 12.sp)
+          Icon(Icons.Default.Email, contentDescription = null, modifier = Modifier.size(15.dp))
+          Spacer(modifier = Modifier.width(4.dp))
+          Text("Email", fontWeight = FontWeight.Bold, fontSize = 11.sp)
         }
       }
     }

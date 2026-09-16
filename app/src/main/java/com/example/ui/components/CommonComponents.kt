@@ -55,8 +55,10 @@ object ShamsContactInfo {
   const val COMPANY_NAME = "SHAMS & Sons Co"
   const val TAGLINE = "Complete IT, CCTV Camera & Access Control Solutions"
   const val EMAIL = "shamssonsco@gmail.com"
-  const val PHONE = "+1 (800) 555-7426"
-  const val WHATSAPP = "+18005557426"
+  const val PHONE = "0321-2336901"
+  const val PHONE_RAW = "03212336901"
+  const val WHATSAPP = "+923212336901"
+  const val WHATSAPP_DISPLAY = "0321-2336901 (+92 321 2336901)"
   const val ADDRESS = "Corporate Tower, Suite 402 - Tech District"
   const val LICENSE = "Licensed Security & IT Infrastructure Contractor"
 
@@ -73,7 +75,7 @@ object ShamsContactInfo {
     }
   }
 
-  fun launchDialer(context: Context, phone: String = PHONE) {
+  fun launchDialer(context: Context, phone: String = PHONE_RAW) {
     val cleanPhone = phone.replace(Regex("[^0-9+]"), "")
     val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$cleanPhone"))
     try {
@@ -84,7 +86,7 @@ object ShamsContactInfo {
   }
 
   fun launchWhatsApp(context: Context, text: String = "Hello SHAMS & Sons Co, I would like to inquire about your CCTV & IT solutions.") {
-    val cleanNumber = WHATSAPP.replace("+", "")
+    val cleanNumber = WHATSAPP.replace("+", "").replace("-", "").replace(" ", "")
     val uri = Uri.parse("https://api.whatsapp.com/send?phone=$cleanNumber&text=${Uri.encode(text)}")
     val intent = Intent(Intent.ACTION_VIEW, uri)
     try {

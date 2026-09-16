@@ -125,7 +125,7 @@ fun EstimatorScreen(
     
     Company: SHAMS & Sons Co
     Email: ${ShamsContactInfo.EMAIL}
-    Phone: ${ShamsContactInfo.PHONE}
+    Phone / WhatsApp: ${ShamsContactInfo.PHONE}
   """.trimIndent()
 
   LazyColumn(
